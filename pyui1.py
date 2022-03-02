@@ -1,20 +1,28 @@
-from PyQt6.QtWidgets import QApplication, QWidget
+## Task 1 ##
+## Create a small app that will invoke a window, including a button.
 
-# Only needed for access to command line arguments
+from PyQt6.QtWidgets import *
+
 import sys
 
-# You need one (and only one) QApplication instance per application.
-# Pass in sys.argv to allow command line arguments for your app.
-# If you know you won't use command line arguments QApplication([]) works too.
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Tane has sheepdog hair")
+        self.setStyleSheet("background-color: yellow;")
+        self.setFixedSize(800,600)
+        self.button = QPushButton("Jo is Josh")
+        self.button.resize(200,100)
+        self.setCentralWidget(self.button)
+        self.button.setStyleSheet("background-color: red;")
+        self.count = 0 
+        self.button.clicked.connect(self.counter)
+        
+    def counter(self):
+        self.button.setText(str(self.count))
+        self.count += 1
+
 app = QApplication(sys.argv)
-
-# Create a Qt widget, which will be our window.
-window = QWidget()
-window.show()  # IMPORTANT!!!!! Windows are hidden by default.
-
-# Start the event loop.
+window = MainWindow()
+window.show()
 app.exec()
-
-
-# Your application won't reach here until you exit and the event
-# loop has stopped.
