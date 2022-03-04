@@ -1,6 +1,7 @@
 ## Task 1 ##
 ## Create a small app that will invoke a window, including a button.
 
+from ctypes import resize
 from PyQt6.QtWidgets import *
 
 import sys
@@ -12,7 +13,7 @@ class MainWindow(QMainWindow):
         self.setStyleSheet("background-color: yellow;")
         self.setFixedSize(800,600)
         self.button = QPushButton("Jo is Josh")
-        self.button.resize(200,100)
+        self.button.resize(100,20)
         self.setCentralWidget(self.button)
         self.button.setStyleSheet("background-color: red;")
         self.count = 0 
