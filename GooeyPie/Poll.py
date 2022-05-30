@@ -12,18 +12,19 @@ Text1 = gp.Label(app, 'House of representitives voting system ')
 
 def CastStart(event):   
     StartVoting = gp.Window(app, 'Cast Your Vote')
-    submit_button = gp.Button(StartVoting, 'Submit', thxpage)
+    submit_button = gp.Button(StartVoting, 'Submit', endpage)
     #window config
     StartVoting.width = 1080
-    StartVoting.height = 320 
+    StartVoting.height = 480 
     StartVoting.show_on_top()
     StartVoting.set_grid(2,7)
     
 
     #labels 
     
-    instructionlabel = gp.Image(StartVoting, 'GooeyPie\AUGOV.png')
+    instructionlabel = gp.Image(StartVoting, 'GooeyPie\Instructions.png')
     instructionlabel.width = 100
+    
     
     candidate1label = gp.Label(StartVoting, 'Candidate 1')
     candidate2label = gp.Label(StartVoting, 'Candidate 2')
@@ -42,10 +43,10 @@ def CastStart(event):
     candidatechoice4 = gp.Dropdown(StartVoting, preference_list)
     candidatechoice5 = gp.Dropdown(StartVoting, preference_list)
     candidatechoice6 = gp.Dropdown(StartVoting, preference_list)
-
+    
     
 
-    StartVoting.add(instructionlabel, 1,1)
+    StartVoting.add(instructionlabel, 1,1, stretch = True)
     StartVoting.add(candidate1label, 1,2)
     StartVoting.add(candidate2label, 1,3)
     StartVoting.add(candidate3label, 1,4)
@@ -60,35 +61,42 @@ def CastStart(event):
     StartVoting.add(candidatechoice5, 2,6)
     StartVoting.add(candidatechoice6, 2,7)
 
-    StartVoting.add(submit_button, 2, 1)
-    
+    StartVoting.add(submit_button, 2, 1, fill = True)
 
-def thxpage(event):
-    thxpage = gp.Window(app, 'Thank you for voting')
-    thxpage.width = 480
-    thxpage.height = 320
-    thxpage.show_on_top()
-    thxpage.set_grid(2,1)
+    first_votes = [candidatechoice1, candidatechoice2, candidatechoice3, candidatechoice4, candidatechoice5, candidatechoice6]
+    total = sum(first_votes)
 
-    thankslabel = gp.Label(thxpage, 'Thank you for voting')
+def endpage(event):
+    endpage = gp.Window(app, 'Thank you for voting')
+    endpage.width = 480
+    endpage.height = 320  
+    endpage.show_on_top()
+    endpage.set_grid(2,1)
 
-    thxpage.add(thankslabel,1,1 )
- 
+    adminwindowbutton = gp.Button(endpage, 'Admin View', adminpage)
+    thankslabel = gp.Label(endpage, 'Thank you for voting ✅')
+
+    endpage.add(thankslabel,1,1, align = 'center') 
+    #Thank you for voting window 
+  
+def adminpage (event):
+    adminpage = gp.Window(app,'Admin View')
+    adminpage.width = 720
+    adminpage.height = 480 
+    adminpage.show_on_top()
+    adminpage.set_grid(6,2)
+
+
+
+
 
 
 BeginButton = gp.Button(app, 'Begin', CastStart)
     
 
-
 app.set_grid(4,1)
 app.add(Govlogo, 1, 1, align = 'center')
 app.add(Text1, 2, 1, align = 'center' )
 app.add(BeginButton,3,1, align = 'center')
-
-
-
-    
-
-
 
 app.run()
