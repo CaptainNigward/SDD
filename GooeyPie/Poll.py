@@ -62,15 +62,18 @@ def CastStart(event):
     StartVoting.add(candidatechoice6, 2,7)
 
     StartVoting.add(submit_button, 2, 1, fill = True)
+    
 
-    first_votes = [candidatechoice1, candidatechoice2, candidatechoice3, candidatechoice4, candidatechoice5, candidatechoice6]
-    total = sum(first_votes)
+
+    
+
+    
 
 def endpage(event):
     endpage = gp.Window(app, 'Thank you for voting')
     endpage.width = 480
     endpage.height = 320  
-    endpage.show_on_top()
+    endpage.show_on_top() 
     endpage.set_grid(2,1)
 
     adminwindowbutton = gp.Button(endpage, 'Admin View', adminpage)
@@ -78,6 +81,8 @@ def endpage(event):
 
     endpage.add(thankslabel,1,1, align = 'center') 
     #Thank you for voting window 
+
+        
   
 def adminpage (event):
     adminpage = gp.Window(app,'Admin View')
@@ -86,7 +91,7 @@ def adminpage (event):
     adminpage.show_on_top()
     adminpage.set_grid(6,2)
 
-
+    
 
 
 
@@ -100,3 +105,4 @@ app.add(Text1, 2, 1, align = 'center' )
 app.add(BeginButton,3,1, align = 'center')
 
 app.run()
+
